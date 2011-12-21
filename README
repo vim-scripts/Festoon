@@ -1,0 +1,22 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3852
+
+Festoon attempts to create color visual cues for as many different elements as
+possible, without becoming a garish eyesore. Festoon should help you more
+easily distinguish blocks of text and their meaning, but should also make you
+happy (as happy as possible, anyway) staring at Vim for hours on end.
+
+For example, I tried to apply some logic to differentiate header levels, even
+though color selections are always somewhat arbitrary, and made the settings
+common to HTML, Markdown, ReStructured Text, and the vimwiki plugin.
+
+A more complete guide to the color can be found here:
+
+http://elflife.net/vim/festoon.mkd
+
+You will need to save that file and reopen it in gVim in order to read it correctly,
+or look at the HTMLized versions online:
+
+http://elflife.net/vim/festoon.html
+http://elflife.net/vim/festoon-dark.html
+
+
