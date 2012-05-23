@@ -1,11 +1,23 @@
 " Name:         festoon.vim
 " Maintainer:   Carson Fire <carsonfire@gmail.com>
-" Last Change:  2012-05-17
+" Last Change:  2012-05-23
+" Version:      1.2:    High contrast option added
 " Version:      1.1:    More colors, better support for dark version
 " Version:      1.0:    Initial upload (2011-12-20)
 
 " Festoon is a dark and a light colorscheme in one. No special setup
 " required, just set the background to dark or light, as desired. 
+
+" Two functions are included to make switching backgrounds quick 'n easy.
+" Sample mapping:
+"
+"       noremap <f2> <esc>:call BgToggle()<cr>
+"       noremap <c-f2> <esc>:call ContrastToggle()<cr>
+
+
+if !exists("FestoonContrast")
+let g:FestoonContrast = "normal"
+endif
 
 if exists("syntax_on")
     exe 'hi clear'
@@ -64,7 +76,11 @@ let s:BrownGrad2 = '#a27a62'
 let s:BrownGrad3 = '#d09d7e'
 
 if &background == "dark"
-    let s:Bg = s:BlackBisque
+    if g:FestoonContrast == "high"
+        let s:Bg = s:Black
+    else
+        let s:Bg = s:BlackBisque
+    endif
     let s:BgHi = s:AlmostBlack2
     let s:BgVyHi = s:Black
     let s:Fg = s:LtGrayMarble
@@ -109,7 +125,11 @@ if &background == "dark"
     let s:Grad11 = s:RedGrad2
     let s:Grad12 = s:RedGrad1
 else
-    let s:Bg = s:Bisque1
+    if g:FestoonContrast == "high"
+        let s:Bg = s:White
+    else
+        let s:Bg = s:Bisque1
+    endif
     let s:BgHi = s:Bisque0
     let s:BgVyHi = s:White
     let s:Fg = s:DkGray
@@ -410,6 +430,19 @@ exe 'hi link textDialogue Tag'
 exe 'hi link textAction Special'
 exe 'hi link textLineEnd Comment'
 exe 'hi link textKoppa String'
+exe 'hi textBoldUnderline gui=bold,underline'
+exe 'hi textBoldItalic gui=bold,italic'
+exe 'hi textBold gui=bold'
+exe 'hi textBoldUnderlineItalic gui=bold,underline,italic'
+exe 'hi link textBoldItalicUnderline textBoldUnderlineItalic '
+exe 'hi link textUnderlineBold textBoldUnderline'
+exe 'hi textUnderlineItalic gui=underline,italic'
+exe 'hi textUnderline gui=underline'
+exe 'hi link textUnderlineBoldItalic textBoldUnderlineItalic'
+exe 'hi link textUnderlineItalicBold textBoldUnderlineItalic'
+exe 'hi link textItalicBold textBoldItalic'
+exe 'hi link textItalicUnderline textUnderlineItalic'
+exe 'hi textItalic gui=italic'
 if !exists("*BgToggle")
     function BgToggle()
         if &background == "light"
@@ -419,6 +452,13 @@ if !exists("*BgToggle")
         endif
     endfunction
 endif
-
-
-
+if !exists("*FestConToggle")
+    function FestConToggle()
+        if g:FestoonContrast == "high"
+            let g:FestoonContrast = "normal"
+        else
+            let g:FestoonContrast = "high"
+        endif
+        colo festoon
+    endfunction
+endif

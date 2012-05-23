@@ -1,12 +1,13 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=3852
 
-Designed to work equally well with background set to dark or light. No vimrc configuration necessary.
+It's Christmas for your code and creative writing! Festoon's light background is a bisque, while the dark background is toasty dark brown. The color palette is large and festive, but the hues are restrained.  Terminal use is not supported. Contrast is moderate, keeping in mind hours of staring at code and text documents, although high contrast is an option.
 
-Includes a simple function BgToggle() which can be mapped for extremely fast background switching.
+Festoon is designed to work equally well with background set to dark or light. No vimrc configuration necessary: simply set the background to dark or light, in vimrc or on the fly. The colorscheme includes a simple function BgToggle() which can be mapped for extremely fast background switching. A high contrast mode is also available, best accessed with the FestConToggle() function, providing a stark black or white background. Sample mapping:
 
-The light background is a bisque, while the dark background is very dark, but not black. The color palette is colorful, but the hues are restrained. Terminal use is not supported.
+       noremap <f2> <esc>:call BgToggle()<cr>
+       noremap <c-f2> <esc>:call FestConToggle()<cr>
 
-The goal of this colorscheme is to create an artistic and functional Vim environment, to make Vim documents as colorful as possible while avoiding overbearing candy colors, and arranging the colors in a logical way so that they are actually useful in providing visual clues about the document.
+A balance has been struck between an attractive layout and functionality: critical content and strings come to the front, while markup and lesser elements recede. Link text is vibrant. Header levels are actually visually differentiated in a logical way. HTML documents can be easily read and managed. Use the following page to compare Festoon to some other colorschemes, including Solarized and some older Vim favorites: http://www.elflife.net/vim/vimcolors.html 
 
 Extraneous formatting (bold, italics, and underlined text) is avoided, except for where this formatting is explicitly called for (and the following exceptions).
 
@@ -24,4 +25,6 @@ Screenshots:
 
     * Light http://elflife.net/vim/FestoonLight.png
     * Dark http://elflife.net/vim/FestoonDark.png
+
+I have not tested this colorscheme in any Vim save the current version, 7.3. Please feel free to provide feedback.
 
