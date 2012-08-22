@@ -1,30 +1,15 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=3852
 
-It's Christmas for your code and creative writing! Festoon's light background is a bisque, while the dark background is toasty dark brown. The color palette is large and festive, but the hues are restrained.  Terminal use is not supported. Contrast is moderate, keeping in mind hours of staring at code and text documents, although high contrast is an option.
+Festoon is intended to beautify Vim, and defines as many different elements as possible, and bends over backwards to accommodate various syntax and plugins (including VimWiki, NERDtree, Netrw, TwitVim, and Viki).
 
-Festoon is designed to work equally well with background set to dark or light. No vimrc configuration necessary: simply set the background to dark or light, in vimrc or on the fly. The colorscheme includes a simple function BgToggle() which can be mapped for extremely fast background switching. A high contrast mode is also available, best accessed with the FestConToggle() function, providing a stark black or white background. Sample mapping:
+HTML is given a more subdued sub-colorscheme in order to differentiate it from other text and code within the same file. Header levels are fully supported.
 
-       noremap <f2> <esc>:call BgToggle()<cr>
-       noremap <c-f2> <esc>:call FestConToggle()<cr>
+A built-in function is included for toggling from light to dark. You don't have to specify one or the other in VIMRC, you can just change on the fly as your mood or lighting dictates.
 
-A balance has been struck between an attractive layout and functionality: critical content and strings come to the front, while markup and lesser elements recede. Link text is vibrant. Header levels are actually visually differentiated in a logical way. HTML documents can be easily read and managed. Use the following page to compare Festoon to some other colorschemes, including Solarized and some older Vim favorites: http://www.elflife.net/vim/vimcolors.html 
-
-Extraneous formatting (bold, italics, and underlined text) is avoided, except for where this formatting is explicitly called for (and the following exceptions).
-
-The status line is underlined in order to create more delineation between the document and the command line. The vertical split is underlined in order to create a unique look for the division between documents (an upside-down T, which could suggest a notebook). Folded headers are underlined.
-
-All six header levels are defined for HTML, broken into color-coded pairs, with the secondary header of each pair italicized. The first header pair (H1 and H2) are tomato red; H3 and H4 are a deep inky blue; H5 and H6 are a maroon. This aids in visually scanning HTML documents for headers.
-
-Headers are defined the same way for VimWiki, Markdown, and reStructuredText syntax.
-
-HTML is largely colored differently from other scripts that may be embedded within, like PHP and CSS. HTML tags are subdued so that other content is dominant. Link text is almost neon.
-
-Many plugins are supported including VimWiki, NERDtree, Netrw, TwitVim, and Viki. Adjustments have been made for various syntax, to create the best look possible.
-
-Screenshots:
-
-    * Light http://elflife.net/vim/FestoonLight.png
-    * Dark http://elflife.net/vim/FestoonDark.png
-
-I have not tested this colorscheme in any Vim save the current version, 7.3. Please feel free to provide feedback.
+Samples online:
+html/Festoon: http://antelucan.com/vimupdate/f/festoon-html.html
+html/Festoon(dark): http://antelucan.com/vimupdate/f/festoon-dark-html.html
+netrw/Festoon: http://antelucan.com/vimupdate/f/festoon-netrw.html
+TwitVim/Festoon: http://antelucan.com/vimupdate/f/festoon-twitvim.html
+Calendar/Festoon: http://antelucan.com/vimupdate/f/festoon-calendar.html
 

@@ -1,7 +1,8 @@
 " Name:         festoon.vim
 " Maintainer:   Carson Fire <carsonfire@gmail.com>
-" Last Change:  2012-05-23
-" Version:      1.2:    High contrast option added
+" Last Change:  2012-08-22
+" Version:      1.3:    Highlights for headers, extras definitions for special effects
+" Version:      1.2:    High contrast option added (2012-05-23)
 " Version:      1.1:    More colors, better support for dark version
 " Version:      1.0:    Initial upload (2011-12-20)
 
@@ -13,7 +14,6 @@
 "
 "       noremap <f2> <esc>:call BgToggle()<cr>
 "       noremap <c-f2> <esc>:call ContrastToggle()<cr>
-
 
 if !exists("FestoonContrast")
 let g:FestoonContrast = "normal"
@@ -44,6 +44,7 @@ let s:Maroon = '#884444'
 let s:DarkFireOrange = '#b95e30'
 let s:Maroon = '#800000'
 let s:StrongYellow = '#ffe568'
+let s:PaleYellow = '#ffefdd'
 let s:HunterGreen = '#326f62'
 let s:Green = '#2e8b57'
 let s:Pink = '#cba3a3'
@@ -75,6 +76,9 @@ let s:BrownGrad1 = '#735745'
 let s:BrownGrad2 = '#a27a62'
 let s:BrownGrad3 = '#d09d7e'
 
+let s:MoneyGreen = '#ecffec'
+let s:Murkwood = '#363b36'
+
 if &background == "dark"
     if g:FestoonContrast == "high"
         let s:Bg = s:Black
@@ -86,14 +90,14 @@ if &background == "dark"
     let s:Fg = s:LtGrayMarble
     let s:FgLo = s:Gray
     let s:FgVyLo = s:DkGray
-    let s:FgVyHi = s:Black
+    let s:FgVyHi = s:White
     let s:BgLo = s:DkGray
     let s:NiInv = s:AlmostAlmostBlack
     let s:Hdr0 = s:SantaRed
     let s:Ttl = s:SantaRed
     let s:String = s:DarkFireOrange
     let s:Warning = s:StrongPink
-    let s:Search = s:StrongYellow
+    let s:Search = s:PaleYellow
     let s:Match = s:DkGray
     let s:Character = s:GreenGrad3
     let s:Question = s:GreenGrad3
@@ -142,7 +146,7 @@ else
     let s:Ttl = s:Maroon
     let s:String = s:DarkFireOrange
     let s:Warning = s:Maroon
-    let s:Search = s:StrongYellow
+    let s:Search = s:PaleYellow
     let s:Match = s:DkGray
     let s:Character = s:HunterGreen
     let s:Question = s:Green
@@ -178,7 +182,7 @@ endif
 exe 'hi Normal gui=none guifg='.s:Fg.' guibg='.s:Bg
 exe 'hi NonText gui=none guifg='.s:NiInv
 exe 'hi Directory gui=none guifg='.s:Hdr0
-exe 'hi Title gui=none guifg='.s:Ttl
+exe 'hi Title gui=none guifg='.s:Ttl.' guibg='.s:BgLo 
 exe 'hi CursorLine guibg='.s:BgHi
 exe 'hi StatusLineNC gui=underline guifg='.s:FgLo.' guibg='.s:BgLo
 exe 'hi StatusLine gui=underline guifg='.s:Fg.' guibg='.s:BgVyHi
@@ -191,18 +195,54 @@ exe 'hi FoldColumn gui=none guifg='.s:BgHi.' guibg='.s:FgLo
 exe 'hi TabLine gui=none guifg='.s:NiInv.' guibg='.s:FgLo
 exe 'hi TabLineSel gui=none guifg='.s:Fg.' guibg='.s:Bg
 exe 'hi TabLineFill gui=none guifg='.s:NiInv.' guibg='.s:Fg
-exe 'hi textGrad1 gui=none guifg='.s:Grad1
-exe 'hi textGrad2 gui=none guifg='.s:Grad2
-exe 'hi textGrad3 gui=none guifg='.s:Grad3
-exe 'hi textGrad4 gui=none guifg='.s:Grad4
-exe 'hi textGrad5 gui=none guifg='.s:Grad5
-exe 'hi textGrad6 gui=none guifg='.s:Grad6
-exe 'hi textGrad7 gui=none guifg='.s:Grad7
-exe 'hi textGrad8 gui=none guifg='.s:Grad8
-exe 'hi textGrad9 gui=none guifg='.s:Grad9
-exe 'hi textGrad10 gui=none guifg='.s:Grad10
-exe 'hi textGrad11 gui=none guifg='.s:Grad11
-exe 'hi textGrad12 gui=none guifg='.s:Grad12
+exe 'hi txtGrad1 gui=none guifg='.s:Grad1
+exe 'hi txtGrad1Bold gui=bold guifg='.s:Grad1
+exe 'hi txtGrad1Italic gui=italic guifg='.s:Grad1
+exe 'hi txtGrad1BoldItalic gui=bold,italic guifg='.s:Grad1
+exe 'hi txtGrad2 gui=none guifg='.s:Grad2
+exe 'hi txtGrad2Bold gui=bold guifg='.s:Grad2
+exe 'hi txtGrad2Italic gui=italic guifg='.s:Grad2
+exe 'hi txtGrad2BoldItalic gui=bold,italic guifg='.s:Grad2
+exe 'hi txtGrad3 gui=none guifg='.s:Grad3
+exe 'hi txtGrad3Bold gui=bold guifg='.s:Grad3
+exe 'hi txtGrad3Italic gui=italic guifg='.s:Grad3
+exe 'hi txtGrad3BoldItalic gui=bold,italic guifg='.s:Grad3
+exe 'hi txtGrad4 gui=none guifg='.s:Grad4
+exe 'hi txtGrad4Bold gui=bold guifg='.s:Grad4
+exe 'hi txtGrad4Italic gui=italic guifg='.s:Grad4
+exe 'hi txtGrad4BoldItalic gui=bold,italic guifg='.s:Grad4
+exe 'hi txtGrad5 gui=none guifg='.s:Grad5
+exe 'hi txtGrad5Bold gui=bold guifg='.s:Grad5
+exe 'hi txtGrad5Italic gui=italic guifg='.s:Grad5
+exe 'hi txtGrad5BoldItalic gui=bold,italic guifg='.s:Grad5
+exe 'hi txtGrad6 gui=none guifg='.s:Grad6
+exe 'hi txtGrad6Bold gui=bold guifg='.s:Grad6
+exe 'hi txtGrad6Italic gui=italic guifg='.s:Grad6
+exe 'hi txtGrad6BoldItalic gui=bold,italic guifg='.s:Grad6
+exe 'hi txtGrad7 gui=none guifg='.s:Grad7
+exe 'hi txtGrad7Bold gui=bold guifg='.s:Grad7
+exe 'hi txtGrad7Italic gui=italic guifg='.s:Grad7
+exe 'hi txtGrad7BoldItalic gui=bold,italic guifg='.s:Grad7
+exe 'hi txtGrad8 gui=none guifg='.s:Grad8
+exe 'hi txtGrad8Bold gui=bold guifg='.s:Grad8
+exe 'hi txtGrad8Italic gui=italic guifg='.s:Grad8
+exe 'hi txtGrad8BoldItalic gui=bold,italic guifg='.s:Grad8
+exe 'hi txtGrad9 gui=none guifg='.s:Grad9
+exe 'hi txtGrad9Bold gui=bold guifg='.s:Grad9
+exe 'hi txtGrad9Italic gui=italic guifg='.s:Grad9
+exe 'hi txtGrad9BoldItalic gui=bold,italic guifg='.s:Grad9
+exe 'hi txtGrad10 gui=none guifg='.s:Grad10
+exe 'hi txtGrad10Bold gui=bold guifg='.s:Grad10
+exe 'hi txtGrad10Italic gui=italic guifg='.s:Grad10
+exe 'hi txtGrad10BoldItalic gui=bold,italic guifg='.s:Grad10
+exe 'hi txtGrad11 gui=none guifg='.s:Grad11
+exe 'hi txtGrad11Bold gui=bold guifg='.s:Grad11
+exe 'hi txtGrad11Italic gui=italic guifg='.s:Grad11
+exe 'hi txtGrad11BoldItalic gui=bold,italic guifg='.s:Grad11
+exe 'hi txtGrad12 gui=none guifg='.s:Grad12
+exe 'hi txtGrad12Bold gui=bold guifg='.s:Grad12
+exe 'hi txtGrad12Italic gui=italic guifg='.s:Grad12
+exe 'hi txtGrad12BoldItalic gui=bold,italic guifg='.s:Grad12
 exe 'hi SpecialKey gui=none guifg='.s:String
 exe 'hi ErrorMsg gui=none guifg='.s:BgHi.' guibg='.s:Warning
 exe 'hi IncSearch gui=none guifg='.s:FgVyHi.' guibg='.s:Search
@@ -231,7 +271,7 @@ exe 'hi CursorColumn gui=none guifg='.s:BgHi.' guibg='.s:Warning
 "exe 'hi ColorColumn'
 exe 'hi Cursor gui=none guifg='.s:Err.' guibg='.s:Cursor
 exe 'hi lCursor guifg=NONE guibg=Cyan'
-exe 'hi MatchParen gui=none guibg='.s:Err
+exe 'hi MatchParen gui=none guifg='.s:FgVyHi.' guibg='.s:Bg
 exe 'hi Constant gui=none guifg='.s:Constant
 exe 'hi Special gui=none guifg='.s:Number
 exe 'hi Identifier gui=none guifg='.s:Identifier
@@ -242,11 +282,21 @@ exe 'hi StatementBold gui=bold guifg='.s:Statement
 exe 'hi StatementBoldItalic gui=bold,italic guifg='.s:Statement
 exe 'hi PreProc gui=none guifg='.s:PreProc
 exe 'hi Type gui=none guifg='.s:Type
+exe 'hi TypeBold gui=bold guifg='.s:Type
+exe 'hi TypeItalic gui=italic guifg='.s:Type
+exe 'hi TypeBoldItalic gui=bold,italic guifg='.s:Type
 exe 'hi Underlined gui=underline guifg='.s:Fg
 exe 'hi link Ignore Comment'
 exe 'hi Error gui=none guifg='.s:Err.' guibg='.s:String
 exe 'hi String gui=none guifg='.s:String
+exe 'hi StringBold gui=bold guifg='.s:String
+exe 'hi StringItalic gui=italic guifg='.s:String
+exe 'hi StringBoldItalic gui=bold,italic guifg='.s:String
+exe 'hi StringUnderline gui=underline guifg='.s:String
 exe 'hi Character gui=none guifg='.s:Character
+exe 'hi CharacterBold gui=bold guifg='.s:Character
+exe 'hi CharacterItalic gui=italic guifg='.s:Character
+exe 'hi CharacterBoldItalic gui=bold,italic guifg='.s:Character
 exe 'hi Number gui=none guifg='.s:Number
 exe 'hi Boolean gui=none guifg='.s:Warning
 exe 'hi Float gui=none guifg='.s:Type
@@ -408,12 +458,15 @@ exe 'hi htmlString gui=none guifg='.s:Statement
 exe 'hi htmlValue gui=none guifg='.s:Value
 exe 'hi htmlSpecialChar guifg='.s:Number
 exe 'hi htmlLink guifg='.s:Link.' gui=none'
-exe 'hi htmlH1 guifg='.s:String.' gui=none'
-exe 'hi htmlH2 guifg='.s:String.' gui=italic'
-exe 'hi htmlH3 guifg='.s:Type.' gui=none'
-exe 'hi htmlH4 guifg='.s:Type.' gui=italic'
-exe 'hi htmlH5 guifg='.s:PreProc.' gui=none'
-exe 'hi htmlH6 guifg='.s:PreProc.' gui=italic'
+exe 'hi htmlLinkItalic guifg='.s:Link.' gui=italic'
+exe 'hi htmlLinkBold guifg='.s:Link.' gui=bold'
+exe 'hi htmlLinkBoldItalic guifg='.s:Link.' gui=bold,italic'
+exe 'hi htmlH1 guibg='.s:BgHi.' guifg='.s:String.' gui=none'
+exe 'hi htmlH2 guibg='.s:BgHi.' guifg='.s:String.' gui=italic'
+exe 'hi htmlH3 guibg='.s:BgHi.' guifg='.s:Type.' gui=none'
+exe 'hi htmlH4 guibg='.s:BgHi.' guifg='.s:Type.' gui=italic'
+exe 'hi htmlH5 guibg='.s:BgHi.' guifg='.s:PreProc.' gui=none'
+exe 'hi htmlH6 guibg='.s:BgHi.' guifg='.s:PreProc.' gui=italic'
 exe 'hi link xmlTagName htmlTagName'
 exe 'hi link xmlTag htmlTag'
 exe 'hi link xmlEndTag htmlTag'
